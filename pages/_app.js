@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Navigation from "../components/Navigation";
-import Login from "../components/Login";
+import AppLayout from "../components/AppLayout";
 import AppHead from "../components/AppHead";
 
 const App = ({ Component }) => {
@@ -10,8 +10,9 @@ const App = ({ Component }) => {
     <>
       <AppHead headtitle="React SNS" />
       <Navigation />
-      <Login />
-      <Component />
+      <AppLayout>
+        <Component />
+      </AppLayout>
     </>
   );
 };

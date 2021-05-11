@@ -52,7 +52,10 @@ const ButtonStyle = styled.div`
 `;
 
 const FormContainer = styled(Form)`
-  padding: 15px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
 `;
 
 LoginForm.propTypes = {

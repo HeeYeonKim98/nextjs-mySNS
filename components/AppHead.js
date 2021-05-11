@@ -12,7 +12,7 @@ const AppHead = ({ headtitle }) => {
 };
 
 AppHead.propTypes = {
-  headtitle: PropTypes.elementType.isRequired,
+  headtitle: PropTypes.string.isRequired,
 };
 
 export default AppHead;
