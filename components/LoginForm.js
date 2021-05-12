@@ -2,14 +2,17 @@ import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styled from "styled-components";
-import { Button, Form, Input } from "antd";
+import { Button, Form } from "antd";
+
+import CustomInput from "../components/inputs/CustomInput";
 
 const LoginForm = ({ setIsLoggedIn }) => {
-  const [inputs, setInputs] = useState({ uId: "", password: "" });
+  const [inputs, setInputs] = useState({ id: "", password: "" });
 
   const onChange = useCallback((e) => {
     const { name, value } = e.target;
     setInputs({
+      ...inputs,
       [name]: value,
     });
   });
@@ -21,16 +24,14 @@ const LoginForm = ({ setIsLoggedIn }) => {
   return (
     <FormContainer onFinish={onSubmit}>
       <div>
-        <label htmlFor="uId">아이디</label>
-        <Input name="id" value={inputs.uId} onChange={onChange}></Input>
-        <label htmlFor="password">비밀번호</label>
-        <Input
+        <CustomInput label="아이디" type="text" name="id" value={inputs.id} onChange={onChange} />
+        <CustomInput
+          label="비밀번호"
           type="password"
           name="password"
           value={inputs.password}
           onChange={onChange}
-          required
-        ></Input>
+        />
       </div>
 
       <ButtonStyle>

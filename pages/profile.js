@@ -10,7 +10,7 @@ const Profile = () => {
 
   return (
     <>
-      <AppHead headtitle="my profile" />
+      <AppHead headtitle="내 프로필 | my SNS" />
       <InfoEditForm />
       <FollowList header="팔로워 목록" data={followerList} />
       <FollowList header="팔로잉 목록" data={followingList} />

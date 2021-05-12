@@ -8,7 +8,7 @@ import AppHead from "../components/AppHead";
 const App = ({ Component }) => {
   return (
     <>
-      <AppHead headtitle="React SNS" />
+      <AppHead headtitle="my SNS" />
       <Navigation />
       <AppLayout>
         <Component />

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Index = () => {
-  return <div>index안녕</div>;
+  return <div>메인화면</div>;
 };
 
 export default Index;
