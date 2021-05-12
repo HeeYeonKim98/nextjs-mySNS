@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Row, Col } from "antd";
-import PropTypes from "prop-types";
 
 import LoginForm from "./LoginForm";
 import Profile from "./Profile";
@@ -29,10 +28,6 @@ const Login = ({ children }) => {
       </Col>
     </Row>
   );
-};
-
-Login.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Login;

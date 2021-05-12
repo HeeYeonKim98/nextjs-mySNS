@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Card, Avatar, Button } from "antd";
 
@@ -36,9 +35,5 @@ const Profile = ({ setIsLoggedIn }) => {
 const CardContainer = styled.div`
   padding: 10px;
 `;
-
-Profile.propTypes = {
-  setIsLoggedIn: PropTypes.elementType.isRequired,
-};
 
 export default Profile;

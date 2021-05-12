@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Navigation from "../components/Navigation";
 import AppLayout from "../components/AppLayout";
@@ -15,10 +14,6 @@ const App = ({ Component }) => {
       </AppLayout>
     </>
   );
-};
-
-App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
 };
 
 export default App;

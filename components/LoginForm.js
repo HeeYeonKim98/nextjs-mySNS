@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
 import styled from "styled-components";
 import { Button, Form } from "antd";
@@ -58,9 +57,5 @@ const FormContainer = styled(Form)`
   background-color: #f2f2f2;
   border-radius: 4px;
 `;
-
-LoginForm.propTypes = {
-  setIsLoggedIn: PropTypes.elementType.isRequired,
-};
 
 export default LoginForm;

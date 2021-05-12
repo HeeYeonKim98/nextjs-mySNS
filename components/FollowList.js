@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Card, List, Button } from "antd";
 import { StopOutlined } from "@ant-design/icons";
@@ -37,10 +36,5 @@ const ButtonStyle = styled.div`
   text-align: center;
   margin: 15px 0;
 `;
-
-FollowList.propTypes = {
-  header: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
-};
 
 export default FollowList;
