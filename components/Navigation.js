@@ -11,12 +11,12 @@ const Navigation = () => {
       <Menu mode="horizontal">
         <Menu.Item>
           <Link href="/">
-            <a>HOME</a>
+            <a>홈</a>
           </Link>
         </Menu.Item>
         <Menu.Item>
           <Link href="/profile">
-            <a>HOME</a>
+            <a>프로필</a>
           </Link>
         </Menu.Item>
         <Menu.Item>
@@ -24,7 +24,7 @@ const Navigation = () => {
         </Menu.Item>
         <Menu.Item>
           <Link href="/signup">
-            <a>HOME</a>
+            <a>회원가입</a>
           </Link>
         </Menu.Item>
       </Menu>

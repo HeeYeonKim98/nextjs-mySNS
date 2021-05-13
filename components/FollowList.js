@@ -12,9 +12,9 @@ const FollowList = ({ header, data }) => {
       header={header}
       dataSource={data}
       loadMore={
-        <ButtonStyle>
+        <ButtonContainer>
           <Button>더 보기</Button>
-        </ButtonStyle>
+        </ButtonContainer>
       }
       renderItem={(data) => (
         <List.Item>
@@ -29,10 +29,9 @@ const FollowList = ({ header, data }) => {
 
 const ListContainer = styled(List)`
   margin-bottom: 30px;
-  margin: 20px;
 `;
 
-const ButtonStyle = styled.div`
+const ButtonContainer = styled.div`
   text-align: center;
   margin: 15px 0;
 `;

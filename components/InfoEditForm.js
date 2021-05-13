@@ -11,7 +11,6 @@ const InfoEditForm = () => {
 };
 
 const FormContainer = styled(Form)`
-  padding: 20px;
   margin-bottom: 20px;
 `;
 

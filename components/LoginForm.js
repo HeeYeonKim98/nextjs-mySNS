@@ -1,20 +1,13 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { Button, Form } from "antd";
 
 import CustomInput from "../components/inputs/CustomInput";
+import useInput from "../hooks/useInput";
 
 const LoginForm = ({ setIsLoggedIn }) => {
-  const [inputs, setInputs] = useState({ id: "", password: "" });
-
-  const onChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  });
+  const [data, setData] = useInput({ id: "", password: "" });
 
   const onSubmit = useCallback(() => {
     setIsLoggedIn(true);
@@ -23,17 +16,17 @@ const LoginForm = ({ setIsLoggedIn }) => {
   return (
     <FormContainer onFinish={onSubmit}>
       <div>
-        <CustomInput label="아이디" type="text" name="id" value={inputs.id} onChange={onChange} />
+        <CustomInput label="아이디" type="text" name="id" value={data.id} onChange={setData} />
         <CustomInput
           label="비밀번호"
           type="password"
           name="password"
-          value={inputs.password}
-          onChange={onChange}
+          value={data.password}
+          onChange={setData}
         />
       </div>
 
-      <ButtonStyle>
+      <ButtonContainer>
         <Button type="primary" htmlType="submit">
           로그인
         </Button>
@@ -42,20 +35,20 @@ const LoginForm = ({ setIsLoggedIn }) => {
             <Button>회원가입</Button>
           </a>
         </Link>
-      </ButtonStyle>
+      </ButtonContainer>
     </FormContainer>
   );
 };
 
-const ButtonStyle = styled.div`
+const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
 
 const FormContainer = styled(Form)`
   padding: 20px;
   margin: 20px;
-  background-color: #f2f2f2;
-  border-radius: 4px;
+  border-radius: 5px;
+  border: 2px solid #f2f2f2;
 `;
 
 export default LoginForm;

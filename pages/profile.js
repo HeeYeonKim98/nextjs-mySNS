@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import AppHead from "../components/AppHead";
 import InfoEditForm from "../components/InfoEditForm";
@@ -11,11 +12,18 @@ const Profile = () => {
   return (
     <>
       <AppHead headtitle="내 프로필 | my SNS" />
-      <InfoEditForm />
-      <FollowList header="팔로워 목록" data={followerList} />
-      <FollowList header="팔로잉 목록" data={followingList} />
+      <Container>
+        <InfoEditForm />
+        <FollowList header="팔로워 목록" data={followerList} />
+        <FollowList header="팔로잉 목록" data={followingList} />
+      </Container>
     </>
   );
 };
+
+const Container = styled.div`
+  padding: 10px;
+  margin: 10px;
+`;
 
 export default Profile;

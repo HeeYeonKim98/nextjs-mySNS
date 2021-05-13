@@ -3,64 +3,79 @@ import { Form, Checkbox, Button } from "antd";
 import styled from "styled-components";
 
 import CustomInput from "./inputs/CustomInput";
+import useInput from "../hooks/useInput";
 
 const SignupForm = () => {
-  const [inputs, setInputs] = useState({
+  const [data, setData] = useInput({
     id: "",
     password: "",
     name: "",
-    passwordCheck: "",
-    passwordError: true,
-    checkboxError: true,
   });
 
-  const onChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  }, []);
+  const [passwordCheck, setPasswordCheck] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const onChangePasswordCheck = useCallback(
+    (e) => {
+      setPasswordCheck(e.target.value);
+      setPasswordError(e.target.value !== data.password);
+    },
+    [data.password]
+  );
+
+  const [checkbox, setCheckbox] = useState(false);
+  const onChangeCheckbox = useCallback((e) => {
+    setCheckbox(e.target.checked);
+  });
 
   const onSubmit = useCallback(() => {}, []);
 
   return (
     <Form onFinish={onSubmit}>
       <div>
-        <CustomInput label="아이디" type="text" name="id" value={inputs.id} onChange={onChange} />
+        <CustomInput label="아이디" type="text" name="id" value={data.id} onChange={setData} />
         <CustomInput
           label="비밀번호"
           type="password"
           name="password"
-          value={inputs.password}
-          onChange={onChange}
+          value={data.password}
+          onChange={setData}
         />
         <CustomInput
           label="비밀번호 확인"
           type="password"
           name="passwordCheck"
-          value={inputs.passwordCheck}
-          onChange={onChange}
+          value={passwordCheck}
+          onChange={onChangePasswordCheck}
         />
-        {inputs.passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
-        <CustomInput label="이름" type="text" name="name" value={inputs.name} onChange={onChange} />
+        {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
+        <CustomInput label="이름" type="text" name="name" value={data.name} onChange={setData} />
         <br />
       </div>
 
       <div>
-        <Checkbox>본인은 제 3자의 개인정보 수집이용에 동의합니다.</Checkbox>
-        {inputs.checkboxError && <ErrorMessage>약관 동의가 필요합니다.</ErrorMessage>}
+        <Checkbox checked={checkbox} onChange={onChangeCheckbox}>
+          본인은 제 3자의 개인정보 수집이용에 동의합니다.
+        </Checkbox>
+        {!checkbox && <ErrorMessage>약관 동의가 필요합니다.</ErrorMessage>}
       </div>
 
-      <div>
-        <Button>확인</Button>
-      </div>
+      <ButtonContainer>
+        <Button type="primary" htmlType="submit">
+          확인
+        </Button>
+      </ButtonContainer>
     </Form>
   );
 };
 
 const ErrorMessage = styled.div`
   color: red;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 `;
 
 export default SignupForm;
