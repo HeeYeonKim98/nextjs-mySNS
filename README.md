@@ -1,10 +1,19 @@
 # nextjs-mySNS
 
+## 💬 Version(fixed)
+
+- next@9
+- styled-components@5
+- next-redux-wrapper@5
+- node.js@14
+
 ### <br/>
 
-## Code Convention
+###
 
-### 💬 Getting Started
+## 💬 Code Convention
+
+### Getting Started
 
 1️⃣ 패키지 설치
 
@@ -26,7 +35,6 @@ $ touch .prettierrc
 |   :sparkles:   |                  새로운 기능 추가                  |
 |     :bug:      |                     버그 수정                      |
 | :construction: |                 작업 진행 중 커밋                  |
-|  :loud_sound:  |               로그 추가 및 업데이트                |
 |   :pencil2:    |               간단한 코드/오타 수정                |
 |   :recycle:    |                   코드 리팩터링                    |
 |    :truck:     |               파일 이동 및 이름 변경               |
