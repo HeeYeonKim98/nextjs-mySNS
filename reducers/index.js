@@ -1,17 +1,17 @@
-import dummyData from "../data/dummy.json";
+import HYDRATE from "next-redux-wrapper";
 
 /**
  *
  * @param {prev state} state
  * @param {action} action
  */
-const Reducer = (state = dummyData, action) => {
+const rootReducer = (state = {}, action) => {
   switch (action.type) {
-    case "LOGIN":
-      return state;
+    case HYDRATE:
+      return { ...state, ...action.payload };
     default:
-      state;
+      return state;
   }
 };
 
-export default Reducer;
+export default rootReducer;

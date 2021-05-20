@@ -1,5 +1,7 @@
 import React from "react";
 
+import wrapper from "../store/Store";
+
 import Navigation from "../components/Navigation";
 import AppLayout from "../components/AppLayout";
 import AppHead from "../components/AppHead";
@@ -16,4 +18,4 @@ const App = ({ Component }) => {
   );
 };
 
-export default App;
+export default wrapper.withRedux(App);
