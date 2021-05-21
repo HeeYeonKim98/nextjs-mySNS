@@ -6,8 +6,18 @@ import InfoEditForm from "../components/InfoEditForm";
 import FollowList from "../components/FollowList";
 
 const Profile = () => {
-  const followerList = [{ name: "예진" }, { name: "성현" }, { name: "수린" }, { name: "희연" }];
-  const followingList = [{ name: "조슈아" }, { name: "도겸" }, { name: "승관" }, { name: "디노" }];
+  const followerList = [
+    { name: "예진" },
+    { name: "성현" },
+    { name: "수린" },
+    { name: "희연" },
+  ];
+  const followingList = [
+    { name: "조슈아" },
+    { name: "도겸" },
+    { name: "승관" },
+    { name: "디노" },
+  ];
 
   return (
     <>

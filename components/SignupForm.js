@@ -32,7 +32,13 @@ const SignupForm = () => {
   return (
     <Form onFinish={onSubmit}>
       <div>
-        <CustomInput label="아이디" type="text" name="id" value={data.id} onChange={setData} />
+        <CustomInput
+          label="아이디"
+          type="text"
+          name="id"
+          value={data.id}
+          onChange={setData}
+        />
         <CustomInput
           label="비밀번호"
           type="password"
@@ -47,8 +53,16 @@ const SignupForm = () => {
           value={passwordCheck}
           onChange={onChangePasswordCheck}
         />
-        {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
-        <CustomInput label="이름" type="text" name="name" value={data.name} onChange={setData} />
+        {passwordError && (
+          <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>
+        )}
+        <CustomInput
+          label="이름"
+          type="text"
+          name="name"
+          value={data.name}
+          onChange={setData}
+        />
         <br />
       </div>
 

@@ -19,7 +19,13 @@ const LoginForm = () => {
   return (
     <FormContainer onFinish={onSubmit}>
       <div>
-        <CustomInput label="아이디" type="text" name="id" value={data.id} onChange={setData} />
+        <CustomInput
+          label="아이디"
+          type="text"
+          name="id"
+          value={data.id}
+          onChange={setData}
+        />
         <CustomInput
           label="비밀번호"
           type="password"

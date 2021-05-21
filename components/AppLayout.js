@@ -19,7 +19,11 @@ const AppLayout = ({ children }) => {
         {children}
       </Col>
       <Col xs={24} md={6} style={{ textAlign: "center" }}>
-        <a href="https://github.com/HeeYeonKim98" target="_blank" rel="noreferrer noopener">
+        <a
+          href="https://github.com/HeeYeonKim98"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           made by heeyeon.K
         </a>
       </Col>
