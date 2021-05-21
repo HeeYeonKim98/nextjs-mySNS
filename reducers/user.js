@@ -1,20 +1,23 @@
-import initialState from "./initalState/initialState";
+import { userState } from "./initalState/initialState";
+import * as Constants from "../constants/constants";
 
-const userReducer = (state = initialState, action) => {
+const reducer = (state = userState, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case Constants.LOG_IN:
       return {
         ...state,
         isLoggedIn: true,
+        user: action.data,
       };
-    case "LOGOUT":
+    case Constants.LOG_OUT:
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggedIn: false,
+        user: null,
       };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default reducer;

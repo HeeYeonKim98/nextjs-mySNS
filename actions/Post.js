@@ -1,3 +1,8 @@
-const postAction = () => {};
+import * as Constants from "../constants/constants";
 
-export default postAction;
+export const postAction = (data) => {
+  return {
+    type: Constants.POST,
+    data,
+  };
+};

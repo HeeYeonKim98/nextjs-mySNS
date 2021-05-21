@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { Card, List, Button } from "antd";
 import { StopOutlined } from "@ant-design/icons";
+import styled from "styled-components";
 
 const FollowList = ({ header, data }) => {
   return (

@@ -6,6 +6,13 @@ const dummyUser = {
   Followers: [],
 };
 
+const userState = {
+  isLoggedIn: false,
+  user: null,
+  signUpData: {},
+  loginData: {},
+};
+
 const dummyPost = {
   id: 2,
   content: "더미데이터입니다.",
@@ -15,13 +22,6 @@ const dummyPost = {
   },
   Images: [],
   Comments: [],
-};
-
-const userState = {
-  isLoggedIn: false,
-  user: null,
-  signUpData: {},
-  loginData: {},
 };
 
 const postState = {
@@ -64,9 +64,4 @@ const postState = {
   postAdded: false,
 };
 
-export default {
-  dummyPost,
-  dummyUser,
-  postState,
-  userState,
-};
+export { dummyPost, dummyUser, postState, userState };

@@ -1,16 +1,19 @@
 import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
-import styled from "styled-components";
 import { Button, Form } from "antd";
+import styled from "styled-components";
 
 import CustomInput from "../components/inputs/CustomInput";
 import useInput from "../hooks/useInput";
+import { loginAction } from "../actions/User";
 
-const LoginForm = ({ setIsLoggedIn }) => {
+const LoginForm = () => {
   const [data, setData] = useInput({ id: "", password: "" });
+  const dispatch = useDispatch();
 
   const onSubmit = useCallback(() => {
-    setIsLoggedIn(true);
+    dispatch(loginAction({ id: data.id, password: data.password }));
   }, []);
 
   return (

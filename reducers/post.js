@@ -1,12 +1,11 @@
-import initialState from "./initalState/initialState";
+import { postState } from "./initalState/initialState";
+// import * as Constants from "../constants/constants";
 
-const postReducer = (state = initialState, action) => {
+const reducer = (state = postState, action) => {
   switch (action.type) {
-    case "POST":
-      return state;
     default:
       return state;
   }
 };
 
-export default postReducer;
+export default reducer;

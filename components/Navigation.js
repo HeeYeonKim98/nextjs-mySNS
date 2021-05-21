@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
 import { Menu, Input } from "antd";
+import styled from "styled-components";
 
 import "antd/dist/antd.css";
 
