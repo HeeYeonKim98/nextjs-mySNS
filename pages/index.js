@@ -1,7 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-const Index = () => {
-  return <div>메인화면</div>;
+import PostForm from "../components/PostForm";
+import PostCard from "../components/PostCard";
+
+const Home = () => {
+  const { isLoggedIn } = useSelector((state) => state.User);
+  const { mainPosts } = useSelector((state) => state.Post);
+
+  return (
+    <>
+      {isLoggedIn && <PostForm />}
+      {mainPosts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
+    </>
+  );
 };
 
-export default Index;
+export default Home;

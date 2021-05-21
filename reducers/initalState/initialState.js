@@ -1,4 +1,4 @@
-const dummyUser = {
+const userDummy = {
   id: 1,
   name: "희연",
   Posts: [],
@@ -13,7 +13,7 @@ const userState = {
   loginData: {},
 };
 
-const dummyPost = {
+const postDummy = {
   id: 2,
   content: "더미데이터입니다.",
   User: {
@@ -64,4 +64,4 @@ const postState = {
   postAdded: false,
 };
 
-export { dummyPost, dummyUser, postState, userState };
+export { postDummy, userDummy, postState, userState };

@@ -7,4 +7,4 @@ export const LOG_OUT = "LOG_OUT";
 /**
  * @description postAction
  */
-export const POST = "POST";
+export const ADD_POST = "ADD_POST";
