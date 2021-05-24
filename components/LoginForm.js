@@ -4,9 +4,10 @@ import Link from "next/link";
 import { Button, Form } from "antd";
 import styled from "styled-components";
 
+import { loginAction } from "../actions/User";
+
 import CustomInput from "../components/inputs/CustomInput";
 import useInput from "../hooks/useInput";
-import { loginAction } from "../actions/User";
 
 const LoginForm = () => {
   const [data, setData] = useInput({ id: "", password: "" });

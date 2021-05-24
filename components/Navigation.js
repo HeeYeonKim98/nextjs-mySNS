@@ -22,11 +22,6 @@ const Navigation = () => {
         <Menu.Item>
           <SearchStyle enterButton />
         </Menu.Item>
-        <Menu.Item>
-          <Link href="/signup">
-            <a>회원가입</a>
-          </Link>
-        </Menu.Item>
       </Menu>
     </div>
   );

@@ -1,4 +1,4 @@
-import { postState, dummyPost } from "./initalState/initialState";
+import { postState, postDummy } from "./initalState/initialState";
 import * as Constants from "../constants/constants";
 
 const reducer = (state = postState, action) => {
@@ -6,11 +6,12 @@ const reducer = (state = postState, action) => {
     case Constants.ADD_POST:
       return {
         ...state,
-        mainPosts: [dummyPost, ...state.mainPosts],
+        mainPosts: [postDummy, ...state.mainPosts],
         postAdded: true,
       };
-    default:
-      return state;
+    default: {
+      return { ...state };
+    }
   }
 };
 

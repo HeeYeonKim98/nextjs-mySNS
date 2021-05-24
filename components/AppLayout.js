@@ -18,7 +18,7 @@ const AppLayout = ({ children }) => {
       <Col xs={24} md={12}>
         {children}
       </Col>
-      <Col xs={24} md={6} style={{ textAlign: "center" }}>
+      <Col xs={24} md={6} style={{ textAlign: "center", padding: 10 }}>
         <a
           href="https://github.com/HeeYeonKim98"
           target="_blank"
