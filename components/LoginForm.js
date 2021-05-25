@@ -14,8 +14,8 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = useCallback(() => {
-    dispatch(loginAction({ id: data.id, password: data.password }));
-  }, []);
+    dispatch(loginAction(data));
+  }, [data]);
 
   return (
     <FormContainer onFinish={onSubmit}>

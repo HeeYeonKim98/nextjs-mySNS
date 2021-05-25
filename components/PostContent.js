@@ -1,9 +1,9 @@
 import React from "react";
 
-const PostContent = () => {
+const PostContent = ({ content }) => {
   return (
     <div>
-      <div>postCotent</div>
+      <div>{content}</div>
     </div>
   );
 };

@@ -14,11 +14,11 @@ const userState = {
 };
 
 const postDummy = {
-  id: 2,
+  id: 3,
   content: "더미데이터입니다.",
   User: {
     id: 1,
-    name: "연희",
+    name: "희연",
   },
   Images: [],
   Comments: [],
@@ -33,6 +33,39 @@ const postState = {
         name: "희연",
       },
       content: "첫 번째 게시글",
+      Images: [
+        {
+          src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
+        },
+        {
+          src: "https://gimg.gilbut.co.kr/book/BN001958/rn_view_BN001958.jpg",
+        },
+        {
+          src: "https://gimg.gilbut.co.kr/book/BN001998/rn_view_BN001998.jpg",
+        },
+      ],
+      Comments: [
+        {
+          User: {
+            nickname: "hee",
+          },
+          content: "우와!",
+        },
+        {
+          User: {
+            nickname: "yeon",
+          },
+          content: "안녕!",
+        },
+      ],
+    },
+    {
+      id: 2,
+      User: {
+        id: "heeyeon",
+        name: "희연",
+      },
+      content: "두 번째 게시글",
       Images: [
         {
           src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
