@@ -9,6 +9,10 @@ const reducer = (state = postState, action) => {
         mainPosts: [postDummy, ...state.mainPosts],
         postAdded: true,
       };
+    case Constants.ADD_COMMENT:
+      return {
+        ...state,
+      };
     default: {
       return { ...state };
     }

@@ -11,9 +11,9 @@ const PostForm = () => {
   const dispatch = useDispatch();
   const imageRef = useRef();
 
-  const onChangeText = (e) => {
+  const onChangeText = useCallback((e) => {
     setText(e.target.value);
-  };
+  }, []);
 
   const onSubmit = useCallback(() => {
     dispatch(addPostAction);

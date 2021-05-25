@@ -5,7 +5,8 @@ import styled from "styled-components";
 import PostCardActions from "./PostCardActions";
 import PostImage from "./PostImage";
 import PostContent from "./PostContent";
-
+import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
 import useToggle from "../hooks/useToggle";
 
 const PostCard = ({ post }) => {
@@ -14,12 +15,17 @@ const PostCard = ({ post }) => {
   return (
     <CardContainer>
       <Card actions={PostCardActions(post, setCommentForm)}>
-        <PostImage />
         <Card.Meta avatar={<Avatar>HY</Avatar>} title="HeeYeon.K" />
+        <PostImage image={post.Images} />
         <PostContent content={post.content} />
       </Card>
 
-      {commentForm && <div>댓글 창</div>}
+      {commentForm && (
+        <>
+          <CommentList post={post} />
+          <CommentForm post={post} />
+        </>
+      )}
     </CardContainer>
   );
 };

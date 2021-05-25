@@ -4,6 +4,7 @@ import wrapper from "../store/store";
 import Navigation from "../components/Navigation";
 import AppLayout from "../components/AppLayout";
 import AppHead from "../components/AppHead";
+import Footer from "../components/Footer";
 
 const App = ({ Component }) => {
   return (
@@ -13,6 +14,7 @@ const App = ({ Component }) => {
       <AppLayout>
         <Component />
       </AppLayout>
+      <Footer />
     </>
   );
 };
