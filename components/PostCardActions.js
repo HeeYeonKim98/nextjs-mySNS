@@ -4,17 +4,25 @@ import { Popover, Button } from "antd";
 import {
   RetweetOutlined,
   HeartOutlined,
+  HeartTwoTone,
   MessageOutlined,
   EllipsisOutlined,
 } from "@ant-design/icons";
-//로그인된 정보랑 게시글의 아이디가 같으면
-const PostCardActions = (post) => {
+
+import useToggle from "../hooks/useToggle";
+
+const PostCardActions = (post, setCommentForm) => {
+  const [liked, setLiked] = useToggle(false);
   const id = useSelector((state) => state.User.user?.id);
 
   return [
     <RetweetOutlined key="retweet" />,
-    <HeartOutlined key="heart" />,
-    <MessageOutlined key="comment" />,
+    liked ? (
+      <HeartTwoTone key="heart" twoToneColor="#FA6B83" onClick={setLiked} />
+    ) : (
+      <HeartOutlined key="heart" onClick={setLiked} />
+    ),
+    <MessageOutlined key="comment" onClick={setCommentForm} />,
     <Popover
       key="more"
       content={

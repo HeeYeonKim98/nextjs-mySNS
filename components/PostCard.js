@@ -1,5 +1,4 @@
 import React from "react";
-// import { useSelector } from "react-redux";
 import { Card, Avatar } from "antd";
 import styled from "styled-components";
 
@@ -7,14 +6,20 @@ import PostCardActions from "./PostCardActions";
 import PostImage from "./PostImage";
 import PostContent from "./PostContent";
 
+import useToggle from "../hooks/useToggle";
+
 const PostCard = ({ post }) => {
+  const [commentForm, setCommentForm] = useToggle(false);
+
   return (
     <CardContainer>
-      <Card actions={PostCardActions(post)}>
+      <Card actions={PostCardActions(post, setCommentForm)}>
         <PostImage />
         <Card.Meta avatar={<Avatar>HY</Avatar>} title="HeeYeon.K" />
         <PostContent content={post.content} />
       </Card>
+
+      {commentForm && <div>댓글 창</div>}
     </CardContainer>
   );
 };
