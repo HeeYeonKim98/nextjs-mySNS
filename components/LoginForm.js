@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button, Form } from "antd";
 import styled from "styled-components";
 
-import { loginAction } from "../actions/User";
+import { loginAction } from "../actions/user";
 
 import CustomInput from "../components/inputs/CustomInput";
 import useInput from "../hooks/useInput";

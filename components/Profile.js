@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Card, Avatar, Button } from "antd";
 import styled from "styled-components";
 
-import { logoutAction } from "../actions/User";
+import { logoutAction } from "../actions/user";
 
 const Profile = () => {
   const dispatch = useDispatch();

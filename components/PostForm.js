@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
 
-import { addPostAction } from "../actions/Post";
+import { addPostAction } from "../actions/post";
 
 const PostForm = () => {
   const [text, setText] = useState("");

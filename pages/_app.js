@@ -1,6 +1,6 @@
 import React from "react";
 
-import wrapper from "../store/store";
+import wrapper from "../store/configureStore";
 import Navigation from "../components/Navigation";
 import AppLayout from "../components/AppLayout";
 import AppHead from "../components/AppHead";

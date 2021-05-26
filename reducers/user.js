@@ -1,5 +1,5 @@
-import { userState } from "./initalState/initialState";
-import * as Constants from "../constants/constants";
+import { userState } from "./initalState";
+import * as Constants from "../constants";
 
 const reducer = (state = userState, action) => {
   switch (action.type) {

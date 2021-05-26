@@ -4,7 +4,7 @@ import { createWrapper } from "next-redux-wrapper";
 
 import rootReducer from "../reducers";
 
-const Store = () => {
+const ConfigureStore = () => {
   const middlewares = [];
   const enhancer =
     process.env.NODE_ENV === "production"
@@ -14,7 +14,7 @@ const Store = () => {
   return store;
 };
 
-const wrapper = createWrapper(Store, {
+const wrapper = createWrapper(ConfigureStore, {
   debug: process.env.NODE_ENV === "development",
 });
 

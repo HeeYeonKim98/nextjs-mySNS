@@ -1,5 +1,5 @@
-import { postState, postDummy } from "./initalState/initialState";
-import * as Constants from "../constants/constants";
+import { postState, postDummy } from "./initalState";
+import * as Constants from "../constants";
 
 const reducer = (state = postState, action) => {
   switch (action.type) {
