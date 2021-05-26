@@ -15,7 +15,10 @@ const PostCard = ({ post }) => {
   return (
     <CardContainer>
       <Card actions={PostCardActions(post, setCommentForm)}>
-        <Card.Meta avatar={<Avatar>HY</Avatar>} title="HeeYeon.K" />
+        <Card.Meta
+          avatar={<Avatar>{post.User.name[0]}</Avatar>}
+          title={post.User.name}
+        />
         <PostImage image={post.Images} />
         <PostContent content={post.content} />
       </Card>

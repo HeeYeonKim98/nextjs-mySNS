@@ -32,7 +32,7 @@ const postState = {
         id: 1,
         name: "희연",
       },
-      content: "첫 번째 게시글",
+      content: "첫 번째 게시글 #첫번째 #완성#해쉬태그",
       Images: [
         {
           src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
