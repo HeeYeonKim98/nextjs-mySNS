@@ -11,6 +11,14 @@
 
 ###
 
+## 💬 Stack
+
+`next`, `redux`, `redux-saga`
+
+### <br/>
+
+###
+
 ## 💬 Code Convention
 
 ### Getting Started
