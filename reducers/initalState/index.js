@@ -7,8 +7,10 @@ const userDummy = {
 };
 
 const userState = {
-  isLoggedIn: false,
-  user: null,
+  isLoggingIn: false, // 로그인 시도 중
+  isLoggedIn: false, // 로그인 중
+  isLoggingOut: false, // 로그아웃 시도 중
+  user: null, // 로그인 정보
   signUpData: {},
   loginData: {},
 };
