@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Button, Form, Input, Comment, Avatar } from "antd";
 import styled from "styled-components";
 
-import { addCommentAction } from "../actions/post";
+import { addCommentRequestAction } from "../actions/post";
 
 const CommentForm = ({ post }) => {
   const [text, setText] = useState("");
@@ -14,7 +14,7 @@ const CommentForm = ({ post }) => {
   }, []);
 
   const onSubmit = useCallback(() => {
-    dispatch(addCommentAction(post.id));
+    dispatch(addCommentRequestAction(post.id));
   }, []);
 
   return (

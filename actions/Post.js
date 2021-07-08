@@ -1,18 +1,12 @@
 import * as Constants from "../constants";
 
-// export const addPostAction = () => {
-//   return {
-//     type: Constants.ADD_POST,
-//   };
-// };
-
-export const addPostAction = {
-  type: Constants.ADD_POST,
+export const addPostRequestAction = {
+  type: Constants.ADD_POST_REQUEST,
 };
 
-export const addCommentAction = (data) => {
+export const addCommentRequestAction = (data) => {
   return {
-    type: Constants.ADD_COMMENT,
+    type: Constants.ADD_COMMENT_REQUEST,
     data,
   };
 };

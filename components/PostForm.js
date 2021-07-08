@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
 
-import { addPostAction } from "../actions/post";
+import { addPostRequestAction } from "../actions/post";
 
 const PostForm = () => {
   const [text, setText] = useState("");
@@ -16,7 +16,7 @@ const PostForm = () => {
   }, []);
 
   const onSubmit = useCallback(() => {
-    dispatch(addPostAction);
+    dispatch(addPostRequestAction);
     setText("");
   }, []);
 
