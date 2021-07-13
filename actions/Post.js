@@ -1,7 +1,12 @@
 import * as Constants from "../constants";
 
-export const addPostRequestAction = {
-  type: Constants.ADD_POST_REQUEST,
+// TODO: 12, data 연결 다시 확인
+
+export const addPostRequestAction = (data) => {
+  return {
+    type: Constants.ADD_POST_REQUEST,
+    data,
+  };
 };
 
 export const addCommentRequestAction = (data) => {

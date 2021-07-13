@@ -7,9 +7,11 @@ const userDummy = {
 };
 
 const userState = {
-  isLoggingIn: false, // 로그인 시도 중
-  isLoggedIn: false, // 로그인 중
-  isLoggingOut: false, // 로그아웃 시도 중
+  isLoggingIn: false, // 로그인 요청
+  isLoggedIn: false, // 로그인 완료
+  isLoggingOut: false, // 로그아웃 요청
+  isSigningUp: false, // 회원가입 요청
+  isSignedUp: false, // 회원가입 완료
   user: null, // 로그인 정보
   signUpData: {},
   loginData: {},
@@ -27,6 +29,10 @@ const postDummy = {
 };
 
 const postState = {
+  isPosting: false, // 게시글 추가 요청
+  isPosted: false, // 게시글 추가 완료
+  isCommenting: false, // 댓글 추가 요청
+  isCommented: false, // 댓글 추가 완료
   mainPosts: [
     {
       id: 1,
@@ -96,5 +102,14 @@ const postState = {
   imagePaths: [],
   postAdded: false,
 };
+
+// const dummyComment = (data) => ({
+//   id: 1,
+//   content: data,
+//   User: {
+//     id: 1,
+//     nickname: "제로초",
+//   },
+// });
 
 export { postDummy, userDummy, postState, userState };

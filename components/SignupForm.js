@@ -1,13 +1,18 @@
 import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Checkbox, Button } from "antd";
 import styled from "styled-components";
+
+import { signUpRequestAction } from "../actions/user";
 
 import CustomInput from "./inputs/CustomInput";
 import useInput from "../hooks/useInput";
 
 const SignupForm = () => {
+  const dispatch = useDispatch();
+  const { isSigningUp } = useSelector((state) => state.User);
   const [data, setData] = useInput({
-    id: "",
+    email: "",
     password: "",
     name: "",
   });
@@ -27,16 +32,18 @@ const SignupForm = () => {
     setCheckbox(e.target.checked);
   });
 
-  const onSubmit = useCallback(() => {}, []);
+  const onSubmit = useCallback(() => {
+    dispatch(signUpRequestAction(data));
+  }, [data]);
 
   return (
     <Form onFinish={onSubmit}>
       <div>
         <CustomInput
-          label="아이디"
-          type="text"
-          name="id"
-          value={data.id}
+          label="이메일"
+          type="email"
+          name="email"
+          value={data.email}
           onChange={setData}
         />
         <CustomInput
@@ -74,7 +81,7 @@ const SignupForm = () => {
       </div>
 
       <ButtonContainer>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={isSigningUp}>
           확인
         </Button>
       </ButtonContainer>

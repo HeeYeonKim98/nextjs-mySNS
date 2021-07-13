@@ -1,21 +1,32 @@
-import React, { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Input, Comment, Avatar } from "antd";
 import styled from "styled-components";
 
 import { addCommentRequestAction } from "../actions/post";
 
+// TODO: 19-22, data name 선언 변경
+
 const CommentForm = ({ post }) => {
   const [text, setText] = useState("");
+  const email = useSelector((state) => state.User.user?.email);
+  const { isCommented } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isCommented) {
+      setText("");
+    }
+  }, [isCommented]);
 
   const onChangeText = useCallback((e) => {
     setText(e.target.value);
   }, []);
 
   const onSubmit = useCallback(() => {
-    dispatch(addCommentRequestAction(post.id));
-  }, []);
+    const data = { id: post.id, content: text, email };
+    dispatch(addCommentRequestAction(data));
+  }, [text, email]);
 
   return (
     <Form onFinish={onSubmit}>

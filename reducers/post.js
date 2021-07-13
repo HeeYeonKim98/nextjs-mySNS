@@ -3,6 +3,7 @@ import * as Constants from "../constants";
 
 const reducer = (state = postState, action) => {
   switch (action.type) {
+    //? 게시글 추가
     case Constants.ADD_POST_REQUEST:
       return {
         ...state,
@@ -21,6 +22,8 @@ const reducer = (state = postState, action) => {
         mainPosts: [postDummy, ...state.mainPosts],
         postAdded: true,
       };
+
+    //? 댓글 추가
     case Constants.ADD_COMMENT_REQUEST:
       return {
         ...state,

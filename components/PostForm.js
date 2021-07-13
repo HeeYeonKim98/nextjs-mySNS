@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
@@ -7,18 +7,24 @@ import { addPostRequestAction } from "../actions/post";
 
 const PostForm = () => {
   const [text, setText] = useState("");
-  const { imagePaths } = useSelector((state) => state.Post);
+  const { imagePaths, isPosted } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
   const imageRef = useRef();
+
+  useEffect(() => {
+    if (isPosted) {
+      setText("");
+    }
+  }, [isPosted]);
 
   const onChangeText = useCallback((e) => {
     setText(e.target.value);
   }, []);
 
   const onSubmit = useCallback(() => {
-    dispatch(addPostRequestAction);
+    dispatch(addPostRequestAction(text));
     setText("");
-  }, []);
+  }, [text]);
 
   //? 첨부파일에 접근할 수 있는 이벤트 함수
   const onClickImageUpload = useCallback(() => {
@@ -67,6 +73,7 @@ const FormContainer = styled.div`
 const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
+
 const ButtonStyle = styled(Button)`
   float: right;
 `;

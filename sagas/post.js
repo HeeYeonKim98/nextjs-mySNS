@@ -19,12 +19,31 @@ function* addPost(action) {
   const res = yield call(addPostAPI, action.data);
   try {
     yield put({
-      type: "ADD_POST_SUCCESS",
+      type: Constants.ADD_POST_SUCCESS,
       data: res.data,
     });
   } catch (err) {
     yield put({
-      type: "ADD_POST_FAILURE",
+      type: Constants.ADD_POST_FAILURE,
+      data: err.message,
+    });
+  }
+}
+
+function addCommentAPI(data) {
+  return axios.post("/api/post/comment/add", data);
+}
+
+function* addComment(action) {
+  const res = yield call(addCommentAPI, action.data);
+  try {
+    yield put({
+      type: Constants.ADD_COMMENT_SUCCESS,
+      data: res.data,
+    });
+  } catch (err) {
+    yield put({
+      type: Constants.ADD_COMMENT_FAILURE,
       data: err.message,
     });
   }
@@ -35,6 +54,10 @@ function* watchAddPost() {
   yield takeLatest(Constants.ADD_POST_REQUEST, addPost);
 }
 
+function* watchAddComment() {
+  yield takeLatest(Constants.ADD_COMMENT_REQUEST, addComment);
+}
+
 export default function* postSaga() {
-  yield all([fork(watchAddPost)]);
+  yield all([fork(watchAddPost), fork(watchAddComment)]);
 }

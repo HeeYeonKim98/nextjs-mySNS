@@ -3,6 +3,7 @@ import * as Constants from "../constants";
 
 const reducer = (state = userState, action) => {
   switch (action.type) {
+    //? 로그인
     case Constants.LOG_IN_REQUEST:
       return {
         ...state,
@@ -19,8 +20,27 @@ const reducer = (state = userState, action) => {
       return {
         ...state,
         isLoggingIn: false,
-        isLoggedIn: false,
       };
+
+    //? 회원가입
+    case Constants.SIGN_UP_REQUEST:
+      return {
+        ...state,
+        isSigningUp: true,
+      };
+    case Constants.SIGN_UP_SUCCESS:
+      return {
+        ...state,
+        isSigningUp: false,
+        isSignedUp: true,
+      };
+    case Constants.SIGN_UP_FAILURE:
+      return {
+        ...state,
+        isSigningUp: false,
+      };
+
+    //? 로그아웃
     case Constants.LOG_OUT_REQUEST:
       return {
         ...state,

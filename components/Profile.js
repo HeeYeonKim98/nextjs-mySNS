@@ -17,15 +17,18 @@ const Profile = () => {
       actions={[
         <div key="post">
           게시물
-          <br />0
+          <br />
+          {user.Posts.length}
         </div>,
         <div key="follower">
           팔로워
-          <br />0
+          <br />
+          {user.Followers.length}
         </div>,
         <div key="following">
           팔로잉
-          <br />0
+          <br />
+          {user.Followings.length}
         </div>,
       ]}
     >
