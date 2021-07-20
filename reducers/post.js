@@ -27,14 +27,17 @@ const reducer = (state = postState, action) => {
     case Constants.ADD_COMMENT_REQUEST:
       return {
         ...state,
+        isCommented: true,
       };
     case Constants.ADD_COMMENT_SUCCESS:
       return {
         ...state,
+        isCommented: true,
       };
     case Constants.ADD_COMMENT_FAILURE:
       return {
         ...state,
+        isCommented: true,
       };
     default: {
       return { ...state };

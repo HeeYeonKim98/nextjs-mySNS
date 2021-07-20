@@ -11,18 +11,18 @@ import {
 
 import useToggle from "../hooks/useToggle";
 
-const PostCardActions = (post, setCommentForm) => {
-  const [liked, setLiked] = useToggle(false);
+const PostCardActions = (post, toggleCommentForm) => {
+  const [liked, toggleLike] = useToggle(false);
   const id = useSelector((state) => state.User.user?.id);
 
   return [
     <RetweetOutlined key="retweet" />,
     liked ? (
-      <HeartTwoTone key="heart" twoToneColor="#FA6B83" onClick={setLiked} />
+      <HeartTwoTone key="heart" twoToneColor="#FA6B83" onClick={toggleLike} />
     ) : (
-      <HeartOutlined key="heart" onClick={setLiked} />
+      <HeartOutlined key="heart" onClick={toggleLike} />
     ),
-    <MessageOutlined key="comment" onClick={setCommentForm} />,
+    <MessageOutlined key="comment" onClick={toggleCommentForm} />,
     <Popover
       key="more"
       content={

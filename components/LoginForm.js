@@ -10,7 +10,7 @@ import CustomInput from "../components/inputs/CustomInput";
 import useInput from "../hooks/useInput";
 
 const LoginForm = () => {
-  const [data, setData] = useInput({ email: "", password: "" });
+  const [data, onChangeData] = useInput({ email: "", password: "" });
   const { isLoggingIn } = useSelector((state) => state.User);
   const dispatch = useDispatch();
 
@@ -26,14 +26,14 @@ const LoginForm = () => {
           type="email"
           name="email"
           value={data.email}
-          onChange={setData}
+          onChange={onChangeData}
         />
         <CustomInput
           label="비밀번호"
           type="password"
           name="password"
           value={data.password}
-          onChange={setData}
+          onChange={onChangeData}
         />
       </div>
 

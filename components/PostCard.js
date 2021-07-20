@@ -10,11 +10,11 @@ import CommentList from "./CommentList";
 import useToggle from "../hooks/useToggle";
 
 const PostCard = ({ post }) => {
-  const [commentForm, setCommentForm] = useToggle(false);
+  const [commentForm, toggleCommentForm] = useToggle(false);
 
   return (
     <CardContainer>
-      <Card actions={PostCardActions(post, setCommentForm)}>
+      <Card actions={PostCardActions(post, toggleCommentForm)}>
         <Card.Meta
           avatar={<Avatar>{post.User.name[0]}</Avatar>}
           title={post.User.name}

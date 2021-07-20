@@ -1,32 +1,31 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Input, Comment, Avatar } from "antd";
 import styled from "styled-components";
 
 import { addCommentRequestAction } from "../actions/post";
 
+import useInput from "../hooks/useInput";
+
 // TODO: 19-22, data name 선언 변경
 
 const CommentForm = ({ post }) => {
-  const [text, setText] = useState("");
+  const [data, onChangeData, setData] = useInput({ text: "" });
   const email = useSelector((state) => state.User.user?.email);
   const { isCommented } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (isCommented) {
-      setText("");
+      setData({ ...data, text: "" });
     }
   }, [isCommented]);
 
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  }, []);
-
   const onSubmit = useCallback(() => {
-    const data = { id: post.id, content: text, email };
-    dispatch(addCommentRequestAction(data));
-  }, [text, email]);
+    dispatch(
+      addCommentRequestAction({ id: post.id, content: data.text, email })
+    );
+  }, [data.text, email]);
 
   return (
     <Form onFinish={onSubmit}>
@@ -36,8 +35,8 @@ const CommentForm = ({ post }) => {
           <>
             <Input.TextArea
               name="text"
-              value={text}
-              onChange={onChangeText}
+              value={data.text}
+              onChange={onChangeData}
               maxLength={140}
               placeholder="댓글을 남겨주세요."
             />

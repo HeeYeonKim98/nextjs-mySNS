@@ -13,7 +13,7 @@ const useInput = (initalValue = null) => {
     },
     [data]
   );
-  return [data, handler];
+  return [data, handler, setData];
 };
 
 export default useInput;

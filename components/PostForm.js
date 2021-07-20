@@ -1,30 +1,27 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
 
 import { addPostRequestAction } from "../actions/post";
 
+import useInput from "../hooks/useInput";
+
 const PostForm = () => {
-  const [text, setText] = useState("");
+  const [data, onChangeData, setData] = useInput({ text: "" });
   const { imagePaths, isPosted } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
   const imageRef = useRef();
 
   useEffect(() => {
     if (isPosted) {
-      setText("");
+      setData({ ...data, text: "" });
     }
   }, [isPosted]);
 
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  }, []);
-
   const onSubmit = useCallback(() => {
-    dispatch(addPostRequestAction(text));
-    setText("");
-  }, [text]);
+    dispatch(addPostRequestAction(data.text));
+  }, [data.text]);
 
   //? 첨부파일에 접근할 수 있는 이벤트 함수
   const onClickImageUpload = useCallback(() => {
@@ -36,8 +33,8 @@ const PostForm = () => {
       <Form onFinish={onSubmit}>
         <Input.TextArea
           name="text"
-          value={text}
-          onChange={onChangeText}
+          value={data.text}
+          onChange={onChangeData}
           maxLength={140}
           placeholder="오늘은 어떤 일이 있었나요?"
         />
