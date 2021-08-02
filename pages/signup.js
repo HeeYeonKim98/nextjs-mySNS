@@ -4,16 +4,14 @@ import styled from "styled-components";
 import AppHead from "../components/AppHead";
 import SignupForm from "../components/SignupForm";
 
-const Signup = () => {
-  return (
-    <>
-      <AppHead headtitle="회원가입 | my SNS" />
-      <Container>
-        <SignupForm />
-      </Container>
-    </>
-  );
-};
+const Signup = () => (
+  <>
+    <AppHead headtitle="회원가입 | my SNS" />
+    <Container>
+      <SignupForm />
+    </Container>
+  </>
+);
 
 const Container = styled.div`
   padding: 10px;

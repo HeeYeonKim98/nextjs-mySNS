@@ -5,27 +5,25 @@ import styled from "styled-components";
 
 import "antd/dist/antd.css";
 
-const Navigation = () => {
-  return (
-    <div>
-      <Menu mode="horizontal">
-        <Menu.Item>
-          <Link href="/">
-            <a>홈</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <Link href="/profile">
-            <a>프로필</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item>
-          <SearchStyle enterButton />
-        </Menu.Item>
-      </Menu>
-    </div>
-  );
-};
+const Navigation = () => (
+  <div>
+    <Menu mode="horizontal">
+      <Menu.Item>
+        <Link href="/">
+          <a>홈</a>
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link href="/profile">
+          <a>프로필</a>
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <SearchStyle enterButton />
+      </Menu.Item>
+    </Menu>
+  </div>
+);
 
 const SearchStyle = styled(Input.Search)`
   vertical-align: middle;

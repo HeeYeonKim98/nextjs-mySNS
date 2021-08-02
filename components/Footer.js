@@ -4,9 +4,7 @@ import styled from "styled-components";
 
 // TODO: css 안맞는 부분 수정
 
-const Footer = () => {
-  return <Container> © made by heeyeon. </Container>;
-};
+const Footer = () => <Container> © made by heeyeon. </Container>;
 
 const Container = styled.div`
   margin-top: 50px;

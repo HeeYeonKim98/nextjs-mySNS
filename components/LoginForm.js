@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { loginRequestAction } from "../actions/user";
 
-import CustomInput from "../components/inputs/CustomInput";
+import CustomInput from "./inputs/CustomInput";
 import useInput from "../hooks/useInput";
 
 const LoginForm = () => {

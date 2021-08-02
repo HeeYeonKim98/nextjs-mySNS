@@ -48,14 +48,12 @@ const PostForm = () => {
         </ButtonContainer>
 
         <div>
-          {imagePaths.map((value) => {
-            return (
-              <div key={value}>
-                <img alt={value} />
-                <Button>삭제</Button>
-              </div>
-            );
-          })}
+          {imagePaths.map((value) => (
+            <div key={value}>
+              <img alt={value} />
+              <Button>삭제</Button>
+            </div>
+          ))}
         </div>
       </Form>
     </FormContainer>

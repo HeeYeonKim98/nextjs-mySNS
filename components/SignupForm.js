@@ -24,7 +24,8 @@ const SignupForm = () => {
   useEffect(() => {
     if (data.password !== data.passwordCheck) {
       return setPasswordError(true);
-    } else return setPasswordError(false);
+    }
+    return setPasswordError(false);
   }, [data.password, data.passwordCheck]);
 
   const onSubmit = useCallback(() => {
