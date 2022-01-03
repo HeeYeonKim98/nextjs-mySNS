@@ -1,5 +1,7 @@
-import React from "react";
+/* eslint-disable jsx-a11y/alt-text */
 import { Card, Carousel } from "antd";
+
+import React from "react";
 import styled from "styled-components";
 
 const PostImage = ({ image }) => (

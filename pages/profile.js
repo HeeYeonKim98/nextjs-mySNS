@@ -1,10 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import styled from "styled-components";
-
 import AppHead from "../components/AppHead";
-import InfoEditForm from "../components/InfoEditForm";
 import FollowList from "../components/FollowList";
+import InfoEditForm from "../components/InfoEditForm";
+import React from "react";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.User);

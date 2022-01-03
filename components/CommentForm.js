@@ -1,10 +1,9 @@
+import { Avatar, Button, Comment, Form, Input } from "antd";
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form, Input, Comment, Avatar } from "antd";
-import styled from "styled-components";
 
 import { addCommentRequestAction } from "../actions/post";
-
+import styled from "styled-components";
 import useInput from "../hooks/useInput";
 
 // TODO: 19-22, data name 선언 변경

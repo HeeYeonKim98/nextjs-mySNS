@@ -1,19 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Popover, Button } from "antd";
+import { Button, Popover } from "antd";
 import {
-  RetweetOutlined,
+  EllipsisOutlined,
   HeartOutlined,
   HeartTwoTone,
   MessageOutlined,
-  EllipsisOutlined,
+  RetweetOutlined,
 } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
 
+import React from "react";
+import { deletePostRequestAction } from "../actions/post";
 import useToggle from "../hooks/useToggle";
 
 const PostCardActions = (post, toggleCommentForm) => {
   const [liked, toggleLike] = useToggle(false);
+  const { deletePostLoading } = useSelector((state) => state.Post);
   const id = useSelector((state) => state.User.user?.id);
+  const dispatch = useDispatch();
+  const onClickDeletePost = () => {
+    dispatch(deletePostRequestAction({ id: post.id }));
+  };
 
   return [
     <RetweetOutlined key="retweet" />,
@@ -30,7 +36,13 @@ const PostCardActions = (post, toggleCommentForm) => {
           {id === post.User.id ? (
             <>
               <Button type="primary">수정</Button>
-              <Button type="danger">삭제</Button>
+              <Button
+                type="danger"
+                loading={deletePostLoading}
+                onClick={onClickDeletePost}
+              >
+                삭제
+              </Button>
             </>
           ) : (
             <Button>신고</Button>

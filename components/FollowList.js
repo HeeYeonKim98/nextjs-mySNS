@@ -1,5 +1,6 @@
+import { Button, Card, List } from "antd";
+
 import React from "react";
-import { Card, List, Button } from "antd";
 import { StopOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 

@@ -1,24 +1,23 @@
+import { Button, Checkbox, Form } from "antd";
 import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Checkbox, Button } from "antd";
-import styled from "styled-components";
-
-import { signUpRequestAction } from "../actions/user";
 
 import CustomInput from "./inputs/CustomInput";
+import { signUpRequestAction } from "../actions/user";
+import styled from "styled-components";
 import useInput from "../hooks/useInput";
 import useToggle from "../hooks/useToggle";
 
 const SignupForm = () => {
   const dispatch = useDispatch();
-  const { isSigningUp } = useSelector((state) => state.User);
+  const { signupLoading } = useSelector((state) => state.User);
   const [data, onChangeData] = useInput({
     email: "",
     password: "",
     passwordCheck: "",
     name: "",
   });
-  const [passwordError, , setPasswordError] = useToggle(false);
+  const [passwordError, setPasswordError] = useToggle(false);
   const [checkbox, toggleCheckbox] = useToggle(false);
 
   useEffect(() => {
@@ -77,7 +76,7 @@ const SignupForm = () => {
       </div>
 
       <ButtonContainer>
-        <Button type="primary" htmlType="submit" loading={isSigningUp}>
+        <Button type="primary" htmlType="submit" loading={signupLoading}>
           확인
         </Button>
       </ButtonContainer>

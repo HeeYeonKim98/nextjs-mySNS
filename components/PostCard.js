@@ -1,12 +1,12 @@
-import React from "react";
-import { Card, Avatar } from "antd";
-import styled from "styled-components";
+import { Avatar, Card } from "antd";
 
-import PostCardActions from "./PostCardActions";
-import PostImage from "./PostImage";
-import PostContent from "./PostContent";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
+import PostCardActions from "./PostCardActions";
+import PostContent from "./PostContent";
+import PostImage from "./PostImage";
+import React from "react";
+import styled from "styled-components";
 import useToggle from "../hooks/useToggle";
 
 const PostCard = ({ post }) => {
@@ -19,7 +19,7 @@ const PostCard = ({ post }) => {
           avatar={<Avatar>{post.User.name[0]}</Avatar>}
           title={post.User.name}
         />
-        <PostImage image={post.Images} />
+        {post.Images[0] != null && <PostImage image={post.Images} />}
         <PostContent content={post.content} />
       </Card>
 

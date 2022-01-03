@@ -1,17 +1,16 @@
+import { Button, Form } from "antd";
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
-import { Button, Form } from "antd";
-import styled from "styled-components";
-
-import { loginRequestAction } from "../actions/user";
 
 import CustomInput from "./inputs/CustomInput";
+import Link from "next/link";
+import { loginRequestAction } from "../actions/user";
+import styled from "styled-components";
 import useInput from "../hooks/useInput";
 
 const LoginForm = () => {
   const [data, onChangeData] = useInput({ email: "", password: "" });
-  const { isLoggingIn } = useSelector((state) => state.User);
+  const { loginLoading } = useSelector((state) => state.User);
   const dispatch = useDispatch();
 
   const onSubmit = useCallback(() => {
@@ -38,7 +37,7 @@ const LoginForm = () => {
       </div>
 
       <ButtonContainer>
-        <Button type="primary" htmlType="submit" loading={isLoggingIn}>
+        <Button type="primary" htmlType="submit" loading={loginLoading}>
           로그인
         </Button>
         <Link href="/signup">

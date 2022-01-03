@@ -3,24 +3,25 @@
  * @desc User
  */
 
-import { all, fork, call, put, takeLatest } from "redux-saga/effects";
-import axios from "axios";
-
 import * as Constants from "../constants";
+
+import { all, call, fork, put, takeLatest } from "redux-saga/effects";
+
+import axios from "axios";
 
 /**
  * @desc User/login
  */
-function loginAPI(data) {
-  return axios.post("/api/user/login", data);
-}
+// function loginAPI(data) {
+//   return axios.post("/api/user/login", data);
+// }
 
 function* login(action) {
   try {
-    const res = yield call(loginAPI, action.data);
+    // const res = yield call(loginAPI, action.data);
     yield put({
       type: Constants.LOG_IN_SUCCESS,
-      data: res.data,
+      data: action.data,
     });
   } catch (err) {
     yield put({
@@ -56,16 +57,16 @@ function* signUp(action) {
 /**
  * @desc User/logout
  */
-function logoutAPI(data) {
-  return axios.post("/api/user/logout", data);
-}
+// function logoutAPI(data) {
+//   return axios.post("/api/user/logout", data);
+// }
 
 function* logout() {
-  const res = yield call(logoutAPI);
+  // const res = yield call(logoutAPI);
   try {
     yield put({
       type: Constants.LOG_OUT_SUCCESS,
-      data: res.data,
+      // data: res.data.message,
     });
   } catch (err) {
     yield put({

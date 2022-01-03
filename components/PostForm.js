@@ -1,23 +1,23 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
-import styled from "styled-components";
+import React, { useCallback, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addPostRequestAction } from "../actions/post";
-
+import styled from "styled-components";
 import useInput from "../hooks/useInput";
 
 const PostForm = () => {
   const [data, onChangeData, setData] = useInput({ text: "" });
-  const { imagePaths, isPosted } = useSelector((state) => state.Post);
+  const { imagePaths, addPostDone } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
   const imageRef = useRef();
 
+  //? 서버에 전송이 완료 될 때, form을 초기화
   useEffect(() => {
-    if (isPosted) {
-      setData({ ...data, text: "" });
+    if (addPostDone) {
+      setData({ text: "" });
     }
-  }, [isPosted]);
+  }, [addPostDone]);
 
   const onSubmit = useCallback(() => {
     dispatch(addPostRequestAction(data.text));

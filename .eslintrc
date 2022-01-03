@@ -25,6 +25,13 @@
     "object-curly-newline": "off",
     "linebreak-style": "off",
     "no-param-reassign": "off",
-    "quotes": ["off", "single"]
+    "quotes": ["off", "single"],
+    "spaced-comment": "off",
+    "react/jsx-wrap-multilines": "off",
+    "no-shadow": "off",
+    "import/order": "off",
+    "comma-dangle": "off",
+    "react/no-array-index-key": "off",
+    "operator-linebreak": "off"
   }
 }

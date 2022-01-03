@@ -1,9 +1,10 @@
-import React from "react";
-import Link from "next/link";
-import { Menu, Input } from "antd";
-import styled from "styled-components";
-
 import "antd/dist/antd.css";
+
+import { Input, Menu } from "antd";
+
+import Link from "next/link";
+import React from "react";
+import styled from "styled-components";
 
 const Navigation = () => (
   <div>

@@ -1,19 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Row, Col } from "antd";
+import "antd/dist/antd.css";
+
+import { Col, Row } from "antd";
 
 import LoginForm from "./LoginForm";
 import Profile from "./Profile";
-
-import "antd/dist/antd.css";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const AppLayout = ({ children }) => {
-  const { isLoggedIn } = useSelector((state) => state.User);
+  const { loginDone } = useSelector((state) => state.User);
 
   return (
     <Row gutter={8}>
       <Col xs={24} md={6}>
-        {isLoggedIn ? <Profile /> : <LoginForm />}
+        {loginDone ? <Profile /> : <LoginForm />}
       </Col>
       <Col xs={24} md={12}>
         {children}

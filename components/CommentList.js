@@ -1,5 +1,6 @@
+import { Avatar, Card, Comment, Divider, List } from "antd";
+
 import React from "react";
-import { List, Comment, Avatar, Card, Divider } from "antd";
 
 const CommentList = ({ post }) => (
   <Card>
