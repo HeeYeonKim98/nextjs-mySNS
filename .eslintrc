@@ -32,6 +32,7 @@
     "import/order": "off",
     "comma-dangle": "off",
     "react/no-array-index-key": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "import/no-unresolved": "off"
   }
 }
