@@ -1,30 +1,84 @@
+import shortid from "shortid";
+
 const userDummy = {
   id: 1,
   name: "희연",
-  Posts: [],
-  Followings: [],
-  Followers: [],
+  Posts: [{ id: 1 }],
+  Followings: [{ nickname: "희연" }, { nickname: "희연" }],
+  Followers: [{ nickname: "희d연" }],
 };
 
 const userState = {
-  isLoggedIn: false,
-  user: null,
+  signupLoading: false, // 요청
+  isSignedUp: false, // 완료
+  signupError: null, // 실패
+
+  loginLoading: false,
+  loginDone: false,
+  loginError: null,
+
+  logoutLoading: false,
+  logoutDone: false,
+  logoutError: null,
+
+  followLoading: false,
+  followDone: false,
+  followError: null,
+
+  unfollowLoading: false,
+  unfollowDone: false,
+  unfollowError: null,
+
+  changeNicknameLoading: false,
+  changeNicknameDone: false,
+  changeNicknameError: null,
+
+  user: null, // 로그인 정보
   signUpData: {},
   loginData: {},
 };
 
-const postDummy = {
-  id: 3,
-  content: "더미데이터입니다.",
+const postDummy = (data) => ({
+  id: data.id,
   User: {
     id: 1,
     name: "희연",
   },
+  content: data.content,
   Images: [],
   Comments: [],
-};
+});
+
+const commentDummy = (data) => ({
+  id: shortid.generate(),
+  User: {
+    id: 1,
+    name: "희영",
+  },
+  content: data,
+});
 
 const postState = {
+  viewPostLoading: false, // 요청
+  viewPostDone: false, // 완료
+  viewPostError: false, // 실패
+
+  addPostLoading: false,
+  addPostDone: false,
+  addPostError: null,
+
+  deletePostLoading: false,
+  deletePostDone: false,
+  deletePostError: false,
+
+  addCommentLoading: false,
+  addCommentDone: false,
+  addCommentError: null,
+
+  deleteCommentLoading: false,
+  deleteCommentDone: false,
+  deleteCommentError: false,
+
   mainPosts: [
     {
       id: 1,
@@ -35,11 +89,13 @@ const postState = {
       content: "첫 번째 게시글 #첫번째 #완성#해쉬태그",
       Images: [
         {
+          id: shortid.generate(),
           src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
         },
       ],
       Comments: [
         {
+          id: shortid.generate(),
           User: {
             name: "hee",
           },
@@ -47,41 +103,7 @@ const postState = {
           content: "우와!",
         },
         {
-          User: {
-            name: "yeon",
-          },
-          date: "2021-08-18",
-          content: "안녕!",
-        },
-      ],
-    },
-    {
-      id: 2,
-      User: {
-        id: "heeyeon",
-        name: "희연",
-      },
-      content: "두 번째 게시글",
-      Images: [
-        {
-          src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
-        },
-        {
-          src: "https://gimg.gilbut.co.kr/book/BN001958/rn_view_BN001958.jpg",
-        },
-        {
-          src: "https://gimg.gilbut.co.kr/book/BN001998/rn_view_BN001998.jpg",
-        },
-      ],
-      Comments: [
-        {
-          User: {
-            name: "hee",
-          },
-          date: "2021-08-18",
-          content: "우와!",
-        },
-        {
+          id: shortid.generate(),
           User: {
             name: "yeon",
           },
@@ -92,7 +114,6 @@ const postState = {
     },
   ],
   imagePaths: [],
-  postAdded: false,
 };
 
-export { postDummy, userDummy, postState, userState };
+export { postDummy, commentDummy, userDummy, postState, userState };

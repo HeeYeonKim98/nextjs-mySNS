@@ -1,14 +1,16 @@
+import { Avatar, Button, Card } from "antd";
 import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { Card, Avatar, Button } from "antd";
-import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
-import { logoutAction } from "../actions/user";
+import { logoutRequestAction } from "../actions/user";
+import styled from "styled-components";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const logout = useCallback(() => {
-    dispatch(logoutAction());
+  const { logoutLoading, user } = useSelector((state) => state.User);
+  console.log(user);
+  const onLogOut = useCallback(() => {
+    dispatch(logoutRequestAction());
   }, []);
 
   return (
@@ -16,20 +18,25 @@ const Profile = () => {
       actions={[
         <div key="post">
           게시물
-          <br />0
+          <br />
+          {user.Posts.length}
         </div>,
         <div key="follower">
           팔로워
-          <br />0
+          <br />
+          {user.Followers.length}
         </div>,
         <div key="following">
           팔로잉
-          <br />0
+          <br />
+          {user.Followings.length}
         </div>,
       ]}
     >
-      <Card.Meta avatar={<Avatar>HY</Avatar>} title="HeeYeon.K" />
-      <Button onClick={logout}>로그아웃</Button>
+      <Card.Meta avatar={<Avatar>{user.name[0]}</Avatar>} title={user.name} />
+      <Button onClick={onLogOut} loading={logoutLoading}>
+        로그아웃
+      </Button>
     </CardContainer>
   );
 };

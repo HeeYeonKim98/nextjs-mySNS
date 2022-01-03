@@ -1,24 +1,27 @@
-import React, { useCallback, useRef, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Button, Form, Input } from "antd";
-import styled from "styled-components";
+import React, { useCallback, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { addPostAction } from "../actions/post";
+import { addPostRequestAction } from "../actions/post";
+import styled from "styled-components";
+import useInput from "../hooks/useInput";
 
 const PostForm = () => {
-  const [text, setText] = useState("");
-  const { imagePaths } = useSelector((state) => state.Post);
+  const [data, onChangeData, setData] = useInput({ text: "" });
+  const { imagePaths, addPostDone } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
   const imageRef = useRef();
 
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  }, []);
+  //? 서버에 전송이 완료 될 때, form을 초기화
+  useEffect(() => {
+    if (addPostDone) {
+      setData({ text: "" });
+    }
+  }, [addPostDone]);
 
   const onSubmit = useCallback(() => {
-    dispatch(addPostAction);
-    setText("");
-  }, []);
+    dispatch(addPostRequestAction(data.text));
+  }, [data.text]);
 
   //? 첨부파일에 접근할 수 있는 이벤트 함수
   const onClickImageUpload = useCallback(() => {
@@ -30,8 +33,8 @@ const PostForm = () => {
       <Form onFinish={onSubmit}>
         <Input.TextArea
           name="text"
-          value={text}
-          onChange={onChangeText}
+          value={data.text}
+          onChange={onChangeData}
           maxLength={140}
           placeholder="오늘은 어떤 일이 있었나요?"
         />
@@ -45,14 +48,12 @@ const PostForm = () => {
         </ButtonContainer>
 
         <div>
-          {imagePaths.map((value) => {
-            return (
-              <div key={value}>
-                <img alt={value} />
-                <Button>삭제</Button>
-              </div>
-            );
-          })}
+          {imagePaths.map((value) => (
+            <div key={value}>
+              <img alt={value} />
+              <Button>삭제</Button>
+            </div>
+          ))}
         </div>
       </Form>
     </FormContainer>
@@ -67,6 +68,7 @@ const FormContainer = styled.div`
 const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
+
 const ButtonStyle = styled(Button)`
   float: right;
 `;

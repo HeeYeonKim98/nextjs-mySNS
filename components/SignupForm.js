@@ -1,57 +1,59 @@
-import React, { useCallback, useState } from "react";
-import { Form, Checkbox, Button } from "antd";
-import styled from "styled-components";
+import { Button, Checkbox, Form } from "antd";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import CustomInput from "./inputs/CustomInput";
+import { signUpRequestAction } from "../actions/user";
+import styled from "styled-components";
 import useInput from "../hooks/useInput";
+import useToggle from "../hooks/useToggle";
 
 const SignupForm = () => {
-  const [data, setData] = useInput({
-    id: "",
+  const dispatch = useDispatch();
+  const { signupLoading } = useSelector((state) => state.User);
+  const [data, onChangeData] = useInput({
+    email: "",
     password: "",
+    passwordCheck: "",
     name: "",
   });
+  const [passwordError, setPasswordError] = useToggle(false);
+  const [checkbox, toggleCheckbox] = useToggle(false);
 
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [passwordError, setPasswordError] = useState(false);
-  const onChangePasswordCheck = useCallback(
-    (e) => {
-      setPasswordCheck(e.target.value);
-      setPasswordError(e.target.value !== data.password);
-    },
-    [data.password]
-  );
+  useEffect(() => {
+    if (data.password !== data.passwordCheck) {
+      return setPasswordError(true);
+    }
+    return setPasswordError(false);
+  }, [data.password, data.passwordCheck]);
 
-  const [checkbox, setCheckbox] = useState(false);
-  const onChangeCheckbox = useCallback((e) => {
-    setCheckbox(e.target.checked);
-  });
-
-  const onSubmit = useCallback(() => {}, []);
+  const onSubmit = useCallback(() => {
+    dispatch(signUpRequestAction(data));
+  }, [data]);
 
   return (
     <Form onFinish={onSubmit}>
       <div>
         <CustomInput
-          label="아이디"
-          type="text"
-          name="id"
-          value={data.id}
-          onChange={setData}
+          label="이메일"
+          type="email"
+          name="email"
+          value={data.email}
+          onChange={onChangeData}
         />
         <CustomInput
           label="비밀번호"
           type="password"
           name="password"
           value={data.password}
-          onChange={setData}
+          onChange={onChangeData}
         />
         <CustomInput
           label="비밀번호 확인"
           type="password"
           name="passwordCheck"
-          value={passwordCheck}
-          onChange={onChangePasswordCheck}
+          value={data.passwordCheck}
+          onChange={onChangeData}
         />
         {passwordError && (
           <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>
@@ -61,20 +63,20 @@ const SignupForm = () => {
           type="text"
           name="name"
           value={data.name}
-          onChange={setData}
+          onChange={onChangeData}
         />
         <br />
       </div>
 
       <div>
-        <Checkbox checked={checkbox} onChange={onChangeCheckbox}>
+        <Checkbox checked={checkbox} onChange={toggleCheckbox}>
           본인은 제 3자의 개인정보 수집이용에 동의합니다.
         </Checkbox>
         {!checkbox && <ErrorMessage>약관 동의가 필요합니다.</ErrorMessage>}
       </div>
 
       <ButtonContainer>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={signupLoading}>
           확인
         </Button>
       </ButtonContainer>

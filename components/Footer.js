@@ -1,10 +1,9 @@
 import React from "react";
-
 import styled from "styled-components";
 
-const Footer = () => {
-  return <Container> © made by heeyeon. </Container>;
-};
+// TODO: css 안맞는 부분 수정
+
+const Footer = () => <Container> © made by heeyeon. </Container>;
 
 const Container = styled.div`
   margin-top: 50px;

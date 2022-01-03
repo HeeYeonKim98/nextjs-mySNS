@@ -1,14 +1,15 @@
 import * as Constants from "../constants";
 
-export const loginAction = (data) => {
-  return {
-    type: Constants.LOG_IN,
-    data,
-  };
-};
+export const loginRequestAction = (data) => ({
+  type: Constants.LOG_IN_REQUEST,
+  data,
+});
 
-export const logoutAction = () => {
-  return {
-    type: Constants.LOG_OUT,
-  };
-};
+export const signUpRequestAction = (data) => ({
+  type: Constants.SIGN_UP_REQUEST,
+  data,
+});
+
+export const logoutRequestAction = () => ({
+  type: Constants.LOG_OUT_REQUEST,
+});

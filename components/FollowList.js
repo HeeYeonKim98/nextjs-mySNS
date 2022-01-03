@@ -1,31 +1,30 @@
+import { Button, Card, List } from "antd";
+
 import React from "react";
-import { Card, List, Button } from "antd";
 import { StopOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
-const FollowList = ({ header, data }) => {
-  return (
-    <ListContainer
-      bordered
-      grid={{ gutter: 4, xs: 2, md: 3 }}
-      size="small"
-      header={header}
-      dataSource={data}
-      loadMore={
-        <ButtonContainer>
-          <Button>더 보기</Button>
-        </ButtonContainer>
-      }
-      renderItem={(data) => (
-        <List.Item>
-          <Card actions={[<StopOutlined key="stop" />]}>
-            <Card.Meta description={data.name} />
-          </Card>
-        </List.Item>
-      )}
-    />
-  );
-};
+const FollowList = ({ header, data }) => (
+  <ListContainer
+    bordered
+    grid={{ gutter: 4, xs: 2, md: 3 }}
+    size="small"
+    header={header}
+    dataSource={data}
+    loadMore={
+      <ButtonContainer>
+        <Button>더 보기</Button>
+      </ButtonContainer>
+    }
+    renderItem={(data) => (
+      <List.Item>
+        <Card actions={[<StopOutlined key="stop" />]}>
+          <Card.Meta description={data.name} />
+        </Card>
+      </List.Item>
+    )}
+  />
+);
 
 const ListContainer = styled(List)`
   margin-bottom: 30px;
