@@ -33,6 +33,8 @@
     "comma-dangle": "off",
     "react/no-array-index-key": "off",
     "operator-linebreak": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "implicit-arrow-linebreak": "off",
+    "no-case-declarations": "off"
   }
 }

@@ -11,18 +11,22 @@ import useInput from "../hooks/useInput";
 const CommentForm = ({ post }) => {
   const [data, onChangeData, setData] = useInput({ text: "" });
   const email = useSelector((state) => state.User.user?.email);
-  const { isCommented } = useSelector((state) => state.Post);
+  const { addCommentDone } = useSelector((state) => state.Post);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isCommented) {
+    if (addCommentDone) {
       setData({ ...data, text: "" });
     }
-  }, [isCommented]);
+  }, [addCommentDone]);
 
   const onSubmit = useCallback(() => {
     dispatch(
-      addCommentRequestAction({ id: post.id, content: data.text, email })
+      addCommentRequestAction({
+        userId: email,
+        postId: post.id,
+        content: data.text,
+      })
     );
   }, [data.text, email]);
 

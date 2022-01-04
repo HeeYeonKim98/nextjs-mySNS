@@ -2,90 +2,74 @@ import * as Constants from "../constants";
 
 import { commentDummy, postDummy, postState } from "./initalState";
 
-const reducer = (state = postState, action) => {
-  switch (action.type) {
-    //? 게시글 조회
-    case Constants.VIEW_POST_REQUEST:
-      return {
-        ...state,
-        addPostLoading: true,
-      };
-    case Constants.VIEW_POST_SUCCESS:
-      return {
-        ...state,
-        mainPosts: [postDummy, ...state.mainPosts],
-        postAdded: true,
-      };
-    case Constants.VIEW_POST_FAILURE:
-      return {
-        addPostLoading: false,
-        addPostError: action.error,
-      };
+import produce from "immer";
 
-    //? 게시글 추가
-    case Constants.ADD_POST_REQUEST:
-      return {
-        ...state,
-        addPostLoading: true,
-      };
-    case Constants.ADD_POST_SUCCESS:
-      return {
-        ...state,
-        addPostLoading: false,
-        addPostDone: true,
-        mainPosts: [postDummy(action.data), ...state.mainPosts],
-      };
-    case Constants.ADD_POST_FAILURE:
-      return {
-        addPostLoading: false,
-        addPostError: action.error,
-      };
+const reducer = (state = postState, action) =>
+  produce(state, (draft) => {
+    switch (action.type) {
+      //? 게시글 조회
+      case Constants.VIEW_POST_REQUEST:
+        draft.viewPostLoading = true;
+        break;
+      case Constants.VIEW_POST_SUCCESS:
+        draft.viewPostLoading = false;
+        // draft.mainPosts;
+        break;
+      case Constants.VIEW_POST_FAILURE:
+        draft.viewPostLoading = false;
+        draft.viewPostError = action.error;
+        break;
 
-    //? 게시글 삭제
-    case Constants.DELETE_POST_REQUEST:
-      return {
-        ...state,
-        deletePostLoading: true,
-      };
-    case Constants.DELETE_POST_SUCCESS:
-      return {
-        ...state,
-        deletePostLoading: false,
-        deletePostDone: true,
-        mainPosts: state.mainPosts.filter(
+      //? 게시글 추가
+      case Constants.ADD_POST_REQUEST:
+        draft.addPostLoading = true;
+        break;
+      case Constants.ADD_POST_SUCCESS:
+        draft.addPostLoading = false;
+        draft.addPostDone = true;
+        draft.mainPosts.unshift(postDummy(action.data));
+        break;
+      case Constants.ADD_POST_FAILURE:
+        draft.addPostLoading = false;
+        draft.addPostError = action.error;
+        break;
+
+      //? 게시글 삭제
+      case Constants.DELETE_POST_REQUEST:
+        draft.deletePostLoading = true;
+        break;
+      case Constants.DELETE_POST_SUCCESS:
+        draft.deletePostLoading = false;
+        draft.deletePostDone = true;
+        draft.mainPosts = draft.mainPosts.filter(
           (value) => value.id !== action.data.id
-        ),
-      };
-    case Constants.DELETE_POST_FAILURE:
-      return {
-        deletePostLoading: false,
-        deletePostError: action.error,
-      };
+        );
+        break;
+      case Constants.DELETE_POST_FAILURE:
+        draft.deletePostLoading = false;
+        draft.deletePostError = action.error;
+        break;
 
-    //? 댓글 추가
-    case Constants.ADD_COMMENT_REQUEST:
-      return {
-        ...state,
-        addCommentLoading: true,
-      };
-    case Constants.ADD_COMMENT_SUCCESS: {
-      const post = state.mainPosts.find((value) => value.id === action.data.id);
-      post.Comments = [commentDummy(action.data), ...post.Comments];
-      return {
-        ...state,
-        addCommentLoading: false,
-        addCommentDone: true,
-      };
+      //? 댓글 추가
+      case Constants.ADD_COMMENT_REQUEST:
+        draft.addCommentLoading = true;
+        break;
+      case Constants.ADD_COMMENT_SUCCESS:
+        draft.addCommentLoading = false;
+        draft.addCommentDone = true;
+        const post = draft.mainPosts.find(
+          (value) => value.id === action.data.postId
+        );
+        post.Comments.unshift(commentDummy(action.data.content));
+        break;
+      case Constants.ADD_COMMENT_FAILURE:
+        draft.addCommentLoading = false;
+        draft.addCommentError = action.error;
+        break;
+
+      default:
+        break;
     }
-    case Constants.ADD_COMMENT_FAILURE:
-      return {
-        addCommentLoading: false,
-        addCommentError: action.error,
-      };
-    default: {
-      return { ...state };
-    }
-  }
-};
+  });
 
 export default reducer;

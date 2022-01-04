@@ -1,12 +1,13 @@
 import shortid from "shortid";
 
-const userDummy = {
+const userDummy = (data) => ({
+  data,
   id: 1,
   name: "희연",
   Posts: [{ id: 1 }],
   Followings: [{ nickname: "희연" }, { nickname: "희연" }],
   Followers: [{ nickname: "희d연" }],
-};
+});
 
 const userState = {
   signupLoading: false, // 요청
@@ -55,6 +56,7 @@ const commentDummy = (data) => ({
     id: 1,
     name: "희영",
   },
+  date: "2021-08-18",
   content: data,
 });
 
