@@ -6,8 +6,6 @@ import { addCommentRequestAction } from "../actions/post";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
 
-// TODO: 19-22, data name 선언 변경
-
 const CommentForm = ({ post }) => {
   const [data, onChangeData, setData] = useInput({ text: "" });
   const email = useSelector((state) => state.User.user?.email);
@@ -36,13 +34,22 @@ const CommentForm = ({ post }) => {
         avatar={<Avatar>💬</Avatar>}
         content={
           <>
-            <Input.TextArea
-              name="text"
-              value={data.text}
-              onChange={onChangeData}
-              maxLength={140}
-              placeholder="댓글을 남겨주세요."
-            />
+            {email !== undefined ? (
+              <Input.TextArea
+                name="text"
+                value={data.text}
+                onChange={onChangeData}
+                maxLength={140}
+                placeholder="댓글을 남겨주세요."
+              />
+            ) : (
+              <Input.TextArea
+                disabled
+                maxLength={140}
+                placeholder="로그인이 필요한 기능입니다."
+              />
+            )}
+
             <ButtonStyle type="primary" htmlType="submit">
               확인
             </ButtonStyle>

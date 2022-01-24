@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const Navigation = () => (
   <div>
-    <Menu mode="horizontal">
+    <Menu mode="horizontal" triggerSubMenuAction="click">
       <Menu.Item>
         <Link href="/">
           <a>홈</a>

@@ -1,7 +1,8 @@
 import shortid from "shortid";
 
 const userDummy = (data) => ({
-  data,
+  email: data.email,
+  password: data.password,
   id: 1,
   name: "희연",
   Posts: [{ id: 1 }],
