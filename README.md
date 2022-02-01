@@ -13,7 +13,7 @@
 
 ## 💬 Stack
 
-`next`, `redux`, `redux-saga`
+`react.js`, `next`, `redux`, `redux-saga`
 
 ### <br/>
 
