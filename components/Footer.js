@@ -6,11 +6,12 @@ import styled from "styled-components";
 const Footer = () => <Container> © made by heeyeon. </Container>;
 
 const Container = styled.div`
-  margin-top: 50px;
-  background-color: #e4e4e4;
-  height: 150px;
-  text-align: center;
-  line-height: 150px;
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Footer;
